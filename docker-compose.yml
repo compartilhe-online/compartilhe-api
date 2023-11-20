@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: 'Dificil123!'
+      MYSQL_DATABASE: 'compartilhe'
+    ports:
+      - '3306:3306'
+    volumes:
+      - ~/mysql:/var/lib/mysql
+    networks:
+      - compartilhe-compose-network
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+    networks:
+      - compartilhe-compose-network
+
+
+networks:
+  compartilhe-compose-network:
+    driver: bridge
